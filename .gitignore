@@ -1,0 +1,18 @@
+# Binaries
+
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Test Binaries
+
+*.test
+
+# Covarage
+
+*.out
+
+# DB Folder
+
+db/
