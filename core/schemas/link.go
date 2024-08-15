@@ -8,7 +8,7 @@ import (
 
 type Link struct {
 	gorm.Model
-	LinkId string
+	LinkId string `gorm:"unique_index"`
 	RedirectUrl string
 }
 

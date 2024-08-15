@@ -3,7 +3,7 @@ package config
 import (
 	"os"
 
-	"github.com/NatalNW7/link.in/schemas"
+	"github.com/NatalNW7/link.in/core/schemas"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
