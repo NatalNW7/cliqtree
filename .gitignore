@@ -16,3 +16,7 @@
 # DB Folder
 
 db/
+
+# env files
+.env
+.env.production
