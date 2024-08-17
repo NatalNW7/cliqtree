@@ -14,7 +14,7 @@ func initRoutes(server *gin.Engine){
 	{
 		routes.GET("/link", func(ctx *gin.Context) {
 			ctx.Header("Content-type", "application/json")
-			ctx.JSON(http.StatusCreated, gin.H{
+			ctx.JSON(http.StatusOK, gin.H{
 				"ping": "pong",
 			})
 		})
