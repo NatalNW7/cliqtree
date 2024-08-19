@@ -1,9 +1,21 @@
 package helper
 
 import (
+	"time"
+
 	"github.com/NatalNW7/link.in/core/schemas"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
+
+type LinkReponse struct {
+	ID uint  `json:"id"`
+	CreatedAt time.Time `json:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
+	DeletedAt gorm.DeletedAt `json:"deletedAt,omitempty"`
+	LinkId string `json:"linkId"`
+	RedirectUrl string `json:"redirectUrl"`
+}
 
 func SendError(ctx *gin.Context, code int, msg string){
 	ctx.Header("Content-Type", "application/json")
@@ -15,7 +27,7 @@ func SendError(ctx *gin.Context, code int, msg string){
 
 func SendSuccess(ctx *gin.Context, code int, data schemas.Link) {
 	ctx.Header("Content-type", "application/json")
-	linkResponse := schemas.LinkReponse{
+	linkResponse := LinkReponse{
 		ID: data.ID,
 		CreatedAt: data.CreatedAt,
 		UpdatedAt: data.UpdatedAt,
