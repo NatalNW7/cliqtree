@@ -17,8 +17,9 @@ func SendSuccess(ctx *gin.Context, code int, data schemas.Link) {
 	ctx.Header("Content-type", "application/json")
 	linkResponse := schemas.LinkReponse{
 		ID: data.ID,
-		CreateAt: data.CreatedAt,
-		// DeleteAt: data.DeletedAt,
+		CreatedAt: data.CreatedAt,
+		UpdatedAt: data.UpdatedAt,
+		DeletedAt: data.DeletedAt,
 		LinkId: data.LinkId,
 		RedirectUrl: data.RedirectUrl,
 	}

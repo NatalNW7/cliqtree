@@ -14,9 +14,9 @@ type Link struct {
 
 type LinkReponse struct {
 	ID uint  `json:"id"`
-	CreateAt time.Time `json:"createAt"`
-	UpdateAt time.Time `json:"updateAt"`
-	DeleteAt time.Time `json:"deleteAt,omitempty"`
+	CreatedAt time.Time `json:"createdAt"`
+	UpdatedAt time.Time `json:"updatedAt"`
+	DeletedAt gorm.DeletedAt `json:"deletedAt,omitempty"`
 	LinkId string `json:"linkId"`
 	RedirectUrl string `json:"redirectUrl"`
 }
