@@ -12,12 +12,13 @@ func initRoutes(server *gin.Engine){
 	basePath := "/api/v1"
 	routes := server.Group(basePath) 
 	{
-		routes.GET("/link", func(ctx *gin.Context) {
+		routes.GET("/ping", func(ctx *gin.Context) {
 			ctx.Header("Content-type", "application/json")
 			ctx.JSON(http.StatusOK, gin.H{
-				"ping": "pong",
+				"message": "pong",
 			})
 		})
+		routes.GET("/link/:linkId", handler.FindShortLinkByLinkId)
 		routes.POST("/link", handler.CreateShortLink)
 	}
 }
