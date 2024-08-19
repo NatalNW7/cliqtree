@@ -3,7 +3,7 @@ package helper
 import "errors"
 
 type LinkRequest struct {
-	Url string `json:"url"`
+	Url string
 }
 
 func (b *LinkRequest) Validade() error {
