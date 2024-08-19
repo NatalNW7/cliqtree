@@ -20,3 +20,6 @@ db/
 # env files
 .env
 .env.production
+
+# Build
+build/
