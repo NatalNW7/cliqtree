@@ -21,7 +21,7 @@ func SendError(ctx *gin.Context, code int, msg string, cause string){
 	ctx.Header("Content-Type", "application/json")
 	ctx.JSON(code, gin.H{
 		"message": msg,
-		"cause": code,
+		"cause": cause,
 	})
 }
 
