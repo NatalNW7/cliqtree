@@ -20,5 +20,6 @@ func initRoutes(server *gin.Engine){
 		})
 		routes.GET("/link/:linkId", handler.FindShortLinkByLinkId)
 		routes.POST("/link", handler.CreateShortLink)
+		routes.GET("/redirect/:linkId", handler.RedirectUrl)
 	}
 }
