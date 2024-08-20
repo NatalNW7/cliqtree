@@ -10,9 +10,9 @@ import (
 )
 
 func FindShortLinkByLinkId(ctx *gin.Context) {
-	linkID := ctx.Param("linkId")
-	if linkID == "" {
-		helper.SendError(ctx, http.StatusBadRequest, "linkId cannot be blank", "")
+	linkID, err := helper.ValidateLinkId(ctx.Param("linkId"))
+	if err != nil {
+		helper.SendError(ctx, http.StatusBadRequest, "linkId cannot be blank", err.Error())
 		return
 	}
 

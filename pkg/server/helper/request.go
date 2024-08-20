@@ -1,6 +1,9 @@
 package helper
 
-import "errors"
+import (
+	"errors"
+	"fmt"
+)
 
 type LinkRequest struct {
 	Url string
@@ -12,4 +15,12 @@ func (b *LinkRequest) Validade() error {
 	}
 
 	return nil
+}
+
+func ValidateLinkId(linkID string) (string, error) {
+	if linkID == "" {
+		return "", fmt.Errorf("linkId provided: %s", linkID)
+	}
+
+	return linkID, nil
 }
