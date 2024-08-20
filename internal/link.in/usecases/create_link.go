@@ -1,6 +1,8 @@
 package usecases
 
 import (
+	"strings"
+
 	"github.com/NatalNW7/link.in/internal/link.in/schemas"
 	"github.com/NatalNW7/link.in/internal/link.in/util"
 	"github.com/NatalNW7/link.in/pkg/config"
@@ -10,7 +12,7 @@ import (
 func CreateShortLink(redirectUrl string, db *gorm.DB, logger *config.Logger) (*schemas.Link, error){
 	link := schemas.Link{
 		LinkId: util.GenerateLinkId(),
-		RedirectUrl: redirectUrl,
+		RedirectUrl: ValidadeRedirectUrl(redirectUrl),
 	}
 
 	err := db.Create(&link).Error
@@ -20,4 +22,12 @@ func CreateShortLink(redirectUrl string, db *gorm.DB, logger *config.Logger) (*s
 	}
 
 	return &link, nil
+}
+
+func ValidadeRedirectUrl(redirectUrl string) string {
+	if !strings.Contains(redirectUrl, "http"){
+		return "https://"+redirectUrl
+	}
+
+	return redirectUrl
 }
