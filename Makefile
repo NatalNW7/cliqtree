@@ -1,7 +1,7 @@
 .PHONY: default run build test docs clean
 
 BUILD_FOLDER=build/run
-MAIN=cmd/main.go
+MAIN=cmd/link.in/main.go
 
 default: run
 

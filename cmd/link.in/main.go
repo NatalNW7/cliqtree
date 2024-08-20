@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/NatalNW7/link.in/config"
-	"github.com/NatalNW7/link.in/server"
+	"github.com/NatalNW7/link.in/pkg/config"
+	"github.com/NatalNW7/link.in/pkg/server"
 )
 
 func main(){

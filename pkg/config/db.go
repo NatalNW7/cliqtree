@@ -1,7 +1,7 @@
 package config
 
 import (
-	"github.com/NatalNW7/link.in/core/schemas"
+	"github.com/NatalNW7/link.in/internal/link.in/schemas"
 	"gorm.io/gorm"
 )
 

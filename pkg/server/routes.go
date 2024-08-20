@@ -3,7 +3,7 @@ package server
 import (
 	"net/http"
 
-	"github.com/NatalNW7/link.in/server/handler"
+	"github.com/NatalNW7/link.in/pkg/server/handler"
 	"github.com/gin-gonic/gin"
 )
 

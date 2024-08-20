@@ -3,7 +3,7 @@ package helper
 import (
 	"time"
 
-	"github.com/NatalNW7/link.in/core/schemas"
+	"github.com/NatalNW7/link.in/internal/link.in/schemas"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -17,15 +17,15 @@ type LinkReponse struct {
 	RedirectUrl string `json:"redirectUrl"`
 }
 
-func SendError(ctx *gin.Context, code int, msg string){
+func SendError(ctx *gin.Context, code int, msg string, cause string){
 	ctx.Header("Content-Type", "application/json")
 	ctx.JSON(code, gin.H{
 		"message": msg,
-		"status": code,
+		"cause": code,
 	})
 }
 
-func SendSuccess(ctx *gin.Context, code int, data schemas.Link) {
+func SendSuccess(ctx *gin.Context, code int, data *schemas.Link) {
 	ctx.Header("Content-type", "application/json")
 	linkResponse := LinkReponse{
 		ID: data.ID,
