@@ -10,10 +10,16 @@ import (
 
 
 func CreateShortLink(ctx *gin.Context) {
+	err := helper.MethodAllowed(ctx.Request.Method)
+	if err != nil {
+		helper.SendError(ctx, http.StatusMethodNotAllowed, err.Error(), err.Error())
+		return		
+	}
+
 	body := helper.LinkRequest{}
 
 	ctx.BindJSON(&body)
-	err := body.Validade()
+	err = body.Validade()
 	if err != nil {
 		logger.Errorf("Error to validate body request: %v", err.Error())
 		helper.SendError(ctx, http.StatusBadRequest, "Error to validate body request", err.Error())

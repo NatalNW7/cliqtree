@@ -3,6 +3,7 @@ package helper
 import (
 	"errors"
 	"fmt"
+	"net/http"
 )
 
 type LinkRequest struct {
@@ -23,4 +24,12 @@ func ValidateLinkId(linkID string) (string, error) {
 	}
 
 	return linkID, nil
+}
+
+func MethodAllowed(httpMethod string) error{
+	if httpMethod == http.MethodGet || httpMethod == http.MethodPost {
+		return nil
+	}
+
+	return fmt.Errorf("method '%s' not allowed", httpMethod)
 }
