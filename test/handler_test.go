@@ -28,8 +28,11 @@ func initConfig() error {
 	return nil
 }
 
-func createGinContext(recorder *httptest.ResponseRecorder) *gin.Context {
-	initConfig()
+func createGinContext(recorder *httptest.ResponseRecorder) (*gin.Context, error) {
+	err := initConfig()
+	if err != nil {
+		return nil, err
+	}
 	gin.SetMode(gin.TestMode)
 
 	ctx, _ := gin.CreateTestContext(recorder)
@@ -38,7 +41,7 @@ func createGinContext(recorder *httptest.ResponseRecorder) *gin.Context {
 		URL: &url.URL{},
 	}
 
-	return ctx
+	return ctx, nil
 }
 
 func MakeGet(ctx *gin.Context, params gin.Params){
@@ -55,7 +58,10 @@ func MakePost(ctx *gin.Context, body interface{}){
 
 func TestCreateLink(t *testing.T){
 	recorder := httptest.NewRecorder()
-	ctx := createGinContext(recorder)
+	ctx, err := createGinContext(recorder)
+	if err != nil {
+		t.Errorf("Something went wrong to create gin context: %v", err)
+	}
 	body := map[string]string{
 		"url": "www.github.com",
 	}
@@ -68,7 +74,7 @@ func TestCreateLink(t *testing.T){
 	}
 
 	var response map[string]interface{}
-	err := json.Unmarshal(recorder.Body.Bytes(), &response)
+	err = json.Unmarshal(recorder.Body.Bytes(), &response)
 	if err != nil {
 		t.Errorf("Not possible to unmarshal body response: %s", err.Error())
 	}
@@ -78,7 +84,10 @@ func TestCreateLink(t *testing.T){
 
 func TestFindLink(t *testing.T){
 	recorder := httptest.NewRecorder()
-	ctx := createGinContext(recorder)
+	ctx, err := createGinContext(recorder)
+	if err != nil {
+		t.Errorf("Something went wrong to create gin context: %v", err)
+	}
 	params := []gin.Param{
 		{
 			Key: "linkId",
@@ -96,7 +105,10 @@ func TestFindLink(t *testing.T){
 
 func TestMethodNotAllowed(t *testing.T){
 	recorder := httptest.NewRecorder()
-	ctx := createGinContext(recorder)
+	ctx, err := createGinContext(recorder)
+	if err != nil {
+		t.Errorf("Something went wrong to create gin context: %v", err)
+	}
 	ctx.Request.Method = http.MethodDelete
 	ctx.Params = []gin.Param{
 		{

@@ -2,8 +2,14 @@ package server
 
 import "github.com/gin-gonic/gin"
 
-func Init() {
+func Init() error {
 	server := gin.Default()
 	initRoutes(server)
-	server.Run()
+
+	err := server.Run()
+	if err != nil {
+		return err
+	}
+	
+	return nil
 }

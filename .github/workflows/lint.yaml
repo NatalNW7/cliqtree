@@ -1,0 +1,20 @@
+name: Linting
+on: pull_request
+
+jobs:
+  golangci-lint:
+    name: golangci-lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup GO
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Go Version
+        run: go version
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest

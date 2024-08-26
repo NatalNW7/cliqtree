@@ -12,6 +12,10 @@ func main(){
 		logger.Errorf("Error to initialize project configuration: %v", err)
 		return
 	}
-
-	server.Init()
+	
+	err = server.Init()
+	if err != nil {
+		logger.Errorf("Error to initialize server: %v", err)
+		return
+	}
 }
