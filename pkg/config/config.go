@@ -18,10 +18,11 @@ func Init() error {
 	env := os.Getenv("LINKIN_ENV")
 	if env == "" {
 		env = "local"
+		os.Setenv("LINKIN_ENV", env)
 	} else {
 		err = godotenv.Load(".env."+env)
 		if err != nil {
-			return fmt.Errorf("Error to load env: %v", err)
+			logger.Errorf("Error to load env: %v", err)
 		}
 	}
 
