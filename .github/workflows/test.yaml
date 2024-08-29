@@ -1,0 +1,17 @@
+name: Test
+on: pull_request
+
+jobs:
+  unittest:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup GO
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Go Version
+        run: go version
+      - run: make test
