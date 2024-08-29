@@ -13,7 +13,7 @@ docker:
 	@docker-compose build
 	@docker-compose up
 test:
-	@go test ./test/...
+	@go test ./test/... -v
 docs:
 	@echo "developing"
 	# @swag init -g $(MAIN)

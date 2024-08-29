@@ -49,3 +49,31 @@ func createSQLiteFile(dbPath string) error {
 
 	return nil
 }
+
+type SQLiteInfo struct {
+	DatabaseInfo
+	PageSize string `json:"page_size"`
+	CacheSize string `json:"cache_size"`
+}
+
+func sqliteInfo() SQLiteInfo {
+	var version string
+	var maxConn string
+	var pgSize string
+	var chSize string
+
+	db.Raw("SELECT sqlite_version()").Scan(&version)
+	db.Raw("PRAGMA max_page_count").Scan(&maxConn)
+	db.Raw("PRAGMA page_size").Scan(&pgSize)
+	db.Raw("PRAGMA cache_size").Scan(&chSize)
+
+	return SQLiteInfo{
+		DatabaseInfo: DatabaseInfo{
+			Name: "SQLite",
+			Version: version,
+			MaxConnections: maxConn,
+		},
+		PageSize: pgSize,
+		CacheSize: chSize,
+	}
+}

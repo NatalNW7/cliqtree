@@ -103,6 +103,26 @@ func TestFindLink(t *testing.T){
 	}
 }
 
+func TestStatus(t *testing.T){
+	recorder := httptest.NewRecorder()
+	ctx, err := createGinContext(recorder)
+	if err != nil {
+		t.Errorf("Something went wrong to create gin context: %v", err)
+	}
+	params := []gin.Param{}
+
+	MakeGet(ctx, params)
+	handler.Status(ctx)
+
+	if recorder.Code != http.StatusOK {
+		t.Errorf("expect %d and got: %d",http.StatusOK , recorder.Code)
+	}
+	
+	if recorder.Body == nil {
+		t.Errorf("No body returned: %v", recorder.Body)
+	}
+}
+
 func TestMethodNotAllowed(t *testing.T){
 	recorder := httptest.NewRecorder()
 	ctx, err := createGinContext(recorder)

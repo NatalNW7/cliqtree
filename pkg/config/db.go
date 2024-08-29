@@ -33,3 +33,17 @@ func initDatabase(env string) (*gorm.DB, error){
 
 	return db, nil
 }
+
+type DatabaseInfo struct {
+	Name string `json:"name"`
+	Version any  `json:"version"`
+	MaxConnections any `json:"max_connections"`
+}
+
+func DbInfo(env string) any {
+	if env == "local" {
+		return sqliteInfo()
+	}
+	
+	return postgresInfo()
+}
