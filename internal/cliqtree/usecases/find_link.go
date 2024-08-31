@@ -1,8 +1,8 @@
 package usecases
 
 import (
-	"github.com/NatalNW7/link.in/internal/link.in/schemas"
-	"github.com/NatalNW7/link.in/pkg/config"
+	"github.com/NatalNW7/cliqtree/internal/cliqtree/schemas"
+	"github.com/NatalNW7/cliqtree/pkg/config"
 	"gorm.io/gorm"
 )
 

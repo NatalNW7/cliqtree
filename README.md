@@ -1,1 +1,1 @@
-# link.in
+# cliqtree

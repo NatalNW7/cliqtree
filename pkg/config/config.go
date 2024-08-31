@@ -15,10 +15,10 @@ var (
 func Init() error {
 	var err error
 
-	env := os.Getenv("LINKIN_ENV")
+	env := os.Getenv("CLIQTREE_ENV")
 	if env == "" {
 		env = "local"
-		os.Setenv("LINKIN_ENV", env)
+		os.Setenv("CLIQTREE_ENV", env)
 	} else {
 		err = godotenv.Load(".env."+env)
 		if err != nil {

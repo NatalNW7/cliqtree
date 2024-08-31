@@ -10,8 +10,8 @@ import (
 	"net/url"
 	"testing"
 
-	"github.com/NatalNW7/link.in/pkg/config"
-	"github.com/NatalNW7/link.in/pkg/server/handler"
+	"github.com/NatalNW7/cliqtree/pkg/config"
+	"github.com/NatalNW7/cliqtree/pkg/server/handler"
 	"github.com/gin-gonic/gin"
 )
 

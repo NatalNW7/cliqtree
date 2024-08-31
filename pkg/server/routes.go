@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/NatalNW7/link.in/pkg/server/handler"
+	"github.com/NatalNW7/cliqtree/pkg/server/handler"
 	"github.com/gin-gonic/gin"
 )
 
