@@ -8,7 +8,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//  @BasePath /api/v1
 
+// @Sumary Create Short Link
+// @Description Create a new short link
+// @Tags Links
+// @Accept json
+// @Produce json
+// @Param request body helper.LinkRequest true "Request body"
+// @Success 201 {object} helper.SuccessResponse
+// @Failure 400 {object} helper.ErrorResponse
+// @Failure 405 {object} helper.ErrorResponse
+// @Failure 500 {object} helper.ErrorResponse
+// @Router /link [post]
 func CreateShortLink(ctx *gin.Context) {
 	err := helper.MethodAllowed(ctx.Request.Method)
 	if err != nil {

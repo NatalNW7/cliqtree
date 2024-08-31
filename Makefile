@@ -15,8 +15,7 @@ docker:
 test:
 	@go test ./test/... -v
 docs:
-	@echo "developing"
-	# @swag init -g $(MAIN)
+	@swag init -g $(MAIN)
 clean:
 	@rm -f $(BUILD_FOLDER)
 	@rm -rf ./docs
