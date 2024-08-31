@@ -3,7 +3,7 @@ package helper
 import (
 	"time"
 
-	"github.com/NatalNW7/link.in/internal/link.in/schemas"
+	"github.com/NatalNW7/cliqtree/internal/cliqtree/schemas"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )

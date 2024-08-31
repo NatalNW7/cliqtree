@@ -9,8 +9,8 @@ services:
     networks:
       - api-network
 
-  link.in:
-    container_name: link.in
+  cliqtree:
+    container_name: cliqtree
     build:
       context: .
       dockerfile: Dockerfile

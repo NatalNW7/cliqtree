@@ -5,12 +5,12 @@ import (
 	"os"
 	"time"
 
-	"github.com/NatalNW7/link.in/pkg/config"
+	"github.com/NatalNW7/cliqtree/pkg/config"
 	"github.com/gin-gonic/gin"
 )
 
 func Status(ctx *gin.Context){
-	env := os.Getenv("LINKIN_ENV")
+	env := os.Getenv("CLIQTREE_ENV")
 	databaseInfo := config.DbInfo(env)
 	
 	ctx.Header("Content-Type", "application/json")

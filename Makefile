@@ -1,7 +1,7 @@
 .PHONY: default run build test docs clean
 
 BUILD_FOLDER=build/run
-MAIN=cmd/link.in/main.go
+MAIN=cmd/cliqtree/main.go
 
 default: run
 

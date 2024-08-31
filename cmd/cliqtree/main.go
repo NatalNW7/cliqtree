@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/NatalNW7/link.in/pkg/config"
-	"github.com/NatalNW7/link.in/pkg/server"
+	"github.com/NatalNW7/cliqtree/pkg/config"
+	"github.com/NatalNW7/cliqtree/pkg/server"
 )
 
 func main(){

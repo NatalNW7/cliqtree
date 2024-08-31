@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"github.com/NatalNW7/link.in/pkg/config"
+	"github.com/NatalNW7/cliqtree/pkg/config"
 	"gorm.io/gorm"
 )
 

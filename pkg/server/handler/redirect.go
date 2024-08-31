@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/NatalNW7/link.in/internal/link.in/usecases"
-	"github.com/NatalNW7/link.in/pkg/server/helper"
+	"github.com/NatalNW7/cliqtree/internal/cliqtree/usecases"
+	"github.com/NatalNW7/cliqtree/pkg/server/helper"
 	"github.com/gin-gonic/gin"
 )
 
