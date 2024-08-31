@@ -1,0 +1,164 @@
+definitions:
+  helper.Dependencies:
+    properties:
+      database: {}
+    type: object
+  helper.ErrorResponse:
+    properties:
+      cause:
+        type: string
+      message:
+        type: string
+    type: object
+  helper.LinkReponse:
+    properties:
+      createdAt:
+        type: string
+      deletedAt: {}
+      id:
+        type: integer
+      linkId:
+        type: string
+      redirectUrl:
+        type: string
+      updatedAt:
+        type: string
+    type: object
+  helper.LinkRequest:
+    properties:
+      url:
+        type: string
+    type: object
+  helper.StatusResponse:
+    properties:
+      dependencies:
+        $ref: '#/definitions/helper.Dependencies'
+      environment:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  helper.SuccessResponse:
+    properties:
+      result:
+        $ref: '#/definitions/helper.LinkReponse'
+    type: object
+info:
+  contact: {}
+paths:
+  /link:
+    post:
+      consumes:
+      - application/json
+      description: Create a new short link
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.LinkRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+        "405":
+          description: Method Not Allowed
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+      tags:
+      - Links
+  /link/{linkId}:
+    get:
+      consumes:
+      - application/json
+      description: Find short link by link id
+      parameters:
+      - description: linkID
+        in: path
+        name: linkId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+        "405":
+          description: Method Not Allowed
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+      tags:
+      - Links
+  /redirect/{linkId}:
+    get:
+      consumes:
+      - application/json
+      description: Find short link by link id and redirect user to redirectUrl
+      parameters:
+      - description: linkID
+        in: path
+        name: linkId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "301":
+          description: Moved Permanently
+          schema:
+            $ref: '#/definitions/helper.SuccessResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+        "405":
+          description: Method Not Allowed
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/helper.ErrorResponse'
+      tags:
+      - Links
+  /status:
+    get:
+      consumes:
+      - application/json
+      description: Check the service status and dependencies
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.StatusResponse'
+      tags:
+      - Staus
+swagger: "2.0"

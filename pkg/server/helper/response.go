@@ -5,16 +5,33 @@ import (
 
 	"github.com/NatalNW7/cliqtree/internal/cliqtree/schemas"
 	"github.com/gin-gonic/gin"
-	"gorm.io/gorm"
 )
 
 type LinkReponse struct {
 	ID uint  `json:"id"`
 	CreatedAt time.Time `json:"createdAt"`
 	UpdatedAt time.Time `json:"updatedAt"`
-	DeletedAt gorm.DeletedAt `json:"deletedAt,omitempty"`
+	DeletedAt any `json:"deletedAt,omitempty"`
 	LinkId string `json:"linkId"`
 	RedirectUrl string `json:"redirectUrl"`
+}
+
+type SuccessResponse struct {
+	Result LinkReponse `json:"result"`
+}
+
+type ErrorResponse struct {
+	Message string `json:"message"`
+	Cause string `json:"cause"`
+}
+
+type Dependencies struct{
+	Database any `json:"database"`
+}
+type StatusResponse struct {
+	UpdatedAt time.Time `json:"updated_at"`
+	Env string	`json:"environment"`
+	Dependencies `json:"dependencies"`
 }
 
 func SendError(ctx *gin.Context, code int, msg string, cause string){
@@ -35,7 +52,7 @@ func SendSuccess(ctx *gin.Context, code int, data *schemas.Link) {
 		LinkId: data.LinkId,
 		RedirectUrl: data.RedirectUrl,
 	}
-	ctx.JSON(code, gin.H{
-		"data": linkResponse,
+	ctx.JSON(code, SuccessResponse{
+		Result: linkResponse,
 	})
 }

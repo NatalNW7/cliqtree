@@ -9,6 +9,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//  @BasePath /api/v1
+
+// @Sumary Redirect Url
+// @Description Find short link by link id and redirect user to redirectUrl
+// @Tags Links
+// @Accept json
+// @Produce json
+// @Param linkId path int true "linkID"
+// @Success 301 {object} helper.SuccessResponse
+// @Failure 400 {object} helper.ErrorResponse
+// @Failure 404 {object} helper.ErrorResponse
+// @Failure 405 {object} helper.ErrorResponse
+// @Failure 500 {object} helper.ErrorResponse
+// @Router /redirect/{linkId} [get]
 func RedirectUrl(ctx *gin.Context) {
 	err := helper.MethodAllowed(ctx.Request.Method)
 	if err != nil {

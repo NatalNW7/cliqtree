@@ -9,6 +9,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+//  @BasePath /api/v1
+
+// @Sumary Find Link
+// @Description Find short link by link id
+// @Tags Links
+// @Accept json
+// @Produce json
+// @Param linkId path int true "linkID"
+// @Success 200 {object} helper.SuccessResponse
+// @Failure 400 {object} helper.ErrorResponse
+// @Failure 405 {object} helper.ErrorResponse
+// @Failure 500 {object} helper.ErrorResponse
+// @Router /link/{linkId} [get]
 func FindShortLinkByLinkId(ctx *gin.Context) {
 	err := helper.MethodAllowed(ctx.Request.Method)
 	if err != nil {
