@@ -78,7 +78,8 @@ func TestCreateLink(t *testing.T){
 	if err != nil {
 		t.Errorf("Not possible to unmarshal body response: %s", err.Error())
 	}
-	data := response["data"].(map[string]interface{})
+	t.Log(recorder.Body)
+	data := response["result"].(map[string]interface{})
 	linkID = data["linkId"].(string)
 }
 
@@ -101,6 +102,8 @@ func TestFindLink(t *testing.T){
 	if recorder.Code != http.StatusOK {
 		t.Errorf("expect %d and got: %d",http.StatusOK , recorder.Code)
 	}
+
+	t.Log(recorder.Body)
 }
 
 func TestStatus(t *testing.T){
@@ -121,6 +124,7 @@ func TestStatus(t *testing.T){
 	if recorder.Body == nil {
 		t.Errorf("No body returned: %v", recorder.Body)
 	}
+	t.Log(recorder.Body)
 }
 
 func TestMethodNotAllowed(t *testing.T){
