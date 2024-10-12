@@ -1,13 +1,6 @@
 app = 'cliqtree'
 primary_region = 'iad'
 
-[build]
-  [build.args]
-    GO_VERSION = '1.23.0'
-
-[env]
-  PORT = '8080'
-
 [http_service]
   internal_port = 8080
   force_https = true
