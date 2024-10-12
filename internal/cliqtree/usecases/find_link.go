@@ -10,7 +10,6 @@ func FindShortLinkByLinkId(linkID string, db *gorm.DB, logger *config.Logger) (*
 	link := schemas.Link{}
 	err := db.Where("link_id = ?", linkID).First(&link).Error
 	if err != nil {
-		// msg := fmt.Sprintf()
 		logger.Errorf("Short link with linkId '%s' not found: %v", linkID, err)
 		return nil, err
 	}
