@@ -14,16 +14,16 @@ var (
 
 func Init() error {
 	var err error
-
 	env := os.Getenv("CLIQTREE_ENV")
-	if env == "" {
-		env = "local"
-		os.Setenv("CLIQTREE_ENV", env)
-	} else {
+	switch env {
+	case "development":
 		err = godotenv.Load(".env."+env)
 		if err != nil {
 			logger.Errorf("Error to load env: %v", err)
 		}
+	default:
+		env = "local"
+		os.Setenv("CLIQTREE_ENV", "local")
 	}
 
 	db, err = initDatabase(env)
