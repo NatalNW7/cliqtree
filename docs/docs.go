@@ -138,10 +138,7 @@ const docTemplate = `{
                 ],
                 "responses": {
                     "301": {
-                        "description": "Moved Permanently",
-                        "schema": {
-                            "$ref": "#/definitions/helper.SuccessResponse"
-                        }
+                        "description": "Moved Permanently"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -180,7 +177,7 @@ const docTemplate = `{
                     "application/json"
                 ],
                 "tags": [
-                    "Staus"
+                    "Status"
                 ],
                 "responses": {
                     "200": {
@@ -211,7 +208,15 @@ const docTemplate = `{
                 }
             }
         },
-        "helper.LinkReponse": {
+        "helper.LinkRequest": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "helper.LinkResponse": {
             "type": "object",
             "properties": {
                 "createdAt": {
@@ -228,14 +233,6 @@ const docTemplate = `{
                     "type": "string"
                 },
                 "updatedAt": {
-                    "type": "string"
-                }
-            }
-        },
-        "helper.LinkRequest": {
-            "type": "object",
-            "properties": {
-                "url": {
                     "type": "string"
                 }
             }
@@ -258,7 +255,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "result": {
-                    "$ref": "#/definitions/helper.LinkReponse"
+                    "$ref": "#/definitions/helper.LinkResponse"
                 }
             }
         }

@@ -17,7 +17,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param linkId path int true "linkID"
-// @Success 301 {object} helper.SuccessResponse
+// @Success 301
 // @Failure 400 {object} helper.ErrorResponse
 // @Failure 404 {object} helper.ErrorResponse
 // @Failure 405 {object} helper.ErrorResponse

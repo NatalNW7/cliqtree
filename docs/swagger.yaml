@@ -10,7 +10,12 @@ definitions:
       message:
         type: string
     type: object
-  helper.LinkReponse:
+  helper.LinkRequest:
+    properties:
+      url:
+        type: string
+    type: object
+  helper.LinkResponse:
     properties:
       createdAt:
         type: string
@@ -22,11 +27,6 @@ definitions:
       redirectUrl:
         type: string
       updatedAt:
-        type: string
-    type: object
-  helper.LinkRequest:
-    properties:
-      url:
         type: string
     type: object
   helper.StatusResponse:
@@ -41,7 +41,7 @@ definitions:
   helper.SuccessResponse:
     properties:
       result:
-        $ref: '#/definitions/helper.LinkReponse'
+        $ref: '#/definitions/helper.LinkResponse'
     type: object
 info:
   contact: {}
@@ -127,8 +127,6 @@ paths:
       responses:
         "301":
           description: Moved Permanently
-          schema:
-            $ref: '#/definitions/helper.SuccessResponse'
         "400":
           description: Bad Request
           schema:
@@ -160,5 +158,5 @@ paths:
           schema:
             $ref: '#/definitions/helper.StatusResponse'
       tags:
-      - Staus
+      - Status
 swagger: "2.0"
