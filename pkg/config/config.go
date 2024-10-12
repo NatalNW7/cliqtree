@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 	"gorm.io/gorm"
 )
@@ -21,6 +22,9 @@ func Init() error {
 		if err != nil {
 			logger.Errorf("Error to load env: %v", err)
 		}
+	case "production":
+		gin.SetMode(gin.ReleaseMode)
+		logger.Info("Runnig on production enviroment")
 	default:
 		env = "local"
 		os.Setenv("CLIQTREE_ENV", "local")
