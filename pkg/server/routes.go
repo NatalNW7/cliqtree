@@ -12,6 +12,10 @@ func initRoutes(server *gin.Engine){
 	handler.Init()
 	basePath := "/api/v1"
 	docs.SwaggerInfo.BasePath = basePath
+	docs.SwaggerInfo.Title = "cliqtree API"
+	docs.SwaggerInfo.Version = "1.0.0"
+	docs.SwaggerInfo.Description = "cliqtree API is open source: https://github.com/NatalNW7/cliqtree"
+
 	routes := server.Group(basePath) 
 	{
 		routes.GET("/link/:linkId", handler.FindShortLinkByLinkId)

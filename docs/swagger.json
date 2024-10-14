@@ -127,10 +127,7 @@
                 ],
                 "responses": {
                     "301": {
-                        "description": "Moved Permanently",
-                        "schema": {
-                            "$ref": "#/definitions/helper.SuccessResponse"
-                        }
+                        "description": "Moved Permanently"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -169,7 +166,7 @@
                     "application/json"
                 ],
                 "tags": [
-                    "Staus"
+                    "Status"
                 ],
                 "responses": {
                     "200": {
@@ -200,7 +197,15 @@
                 }
             }
         },
-        "helper.LinkReponse": {
+        "helper.LinkRequest": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "helper.LinkResponse": {
             "type": "object",
             "properties": {
                 "createdAt": {
@@ -217,14 +222,6 @@
                     "type": "string"
                 },
                 "updatedAt": {
-                    "type": "string"
-                }
-            }
-        },
-        "helper.LinkRequest": {
-            "type": "object",
-            "properties": {
-                "url": {
                     "type": "string"
                 }
             }
@@ -247,7 +244,7 @@
             "type": "object",
             "properties": {
                 "result": {
-                    "$ref": "#/definitions/helper.LinkReponse"
+                    "$ref": "#/definitions/helper.LinkResponse"
                 }
             }
         }

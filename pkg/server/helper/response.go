@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type LinkReponse struct {
+type LinkResponse struct {
 	ID uint  `json:"id"`
 	CreatedAt time.Time `json:"createdAt"`
 	UpdatedAt time.Time `json:"updatedAt"`
@@ -17,7 +17,7 @@ type LinkReponse struct {
 }
 
 type SuccessResponse struct {
-	Result LinkReponse `json:"result"`
+	Result LinkResponse `json:"result"`
 }
 
 type ErrorResponse struct {
@@ -44,7 +44,7 @@ func SendError(ctx *gin.Context, code int, msg string, cause string){
 
 func SendSuccess(ctx *gin.Context, code int, data *schemas.Link) {
 	ctx.Header("Content-type", "application/json")
-	linkResponse := LinkReponse{
+	linkResponse := LinkResponse{
 		ID: data.ID,
 		CreatedAt: data.CreatedAt,
 		UpdatedAt: data.UpdatedAt,

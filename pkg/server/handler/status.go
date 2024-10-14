@@ -14,7 +14,7 @@ import (
 
 // @Sumary Status
 // @Description Check the service status and dependencies
-// @Tags Staus
+// @Tags Status
 // @Accept json
 // @Produce json
 // @Success 200 {object} helper.StatusResponse
